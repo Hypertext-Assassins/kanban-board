@@ -12,7 +12,10 @@ const Column = (props) => {
             cardType={props.name}
         />
         {props.tasks.map((el) =>
+            <div>
             <p>{el}</p>
+            <button onClick={()=> props.handleDeleteCard(el, props.name)}>Delete</button>
+            </div>
         )}
         </div>
         </>  
