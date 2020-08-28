@@ -11,6 +11,26 @@ class Board extends Component {
     done: ["done state"]
   }
 
+  state ={
+    columns: [
+      {
+        name: "todo",
+        tasks: ["test todo"]
+      },
+      {
+        name: "inProgress",
+        tasks: ["test inprogr"]
+      },
+      {
+        name: "done",
+        tasks: ["test done"]
+      }
+    ]
+  }
+
+  handleAddCard2 = (formData, cardType) => {
+    
+  }
 
   handleAddCard = (formData, cardType) => {
     if (cardType === "todo") {
