@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Popover } from 'react-bootstrap';
 
-class FormOverlay extends Component {
+class AddTask extends Component {
     state = { 
         formData: ""
      }
@@ -33,7 +33,7 @@ class FormOverlay extends Component {
     }
 }
  
-export default FormOverlay;
+export default AddTask;
 
 
 

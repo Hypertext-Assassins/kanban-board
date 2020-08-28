@@ -12,7 +12,10 @@ const InProgress = (props) => {
             cardType="inProgress"
         />
         {props.inProgress.map((el) =>
+        <>
             <p>{el}</p>
+            <button onClick={()=> props.handleDeleteCard(el, "inProgress")}>Delete</button>
+        </>
         )}
         </div>
         </>  
