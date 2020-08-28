@@ -3,7 +3,7 @@ import {Popover } from 'react-bootstrap';
 
 class FormOverlay extends Component {
     state = { 
-        formData: {task: ""}
+        formData: ""
      }
 
     handleSubmit = (e) => {
@@ -12,8 +12,7 @@ class FormOverlay extends Component {
     } 
 
     handleChange = (e) => {
-        const formData = {...this.state.formData, [e.target.name]: e.target.value}
-        this.setState({formData})
+        this.setState({formData: e.target.value})
     }
     render() { 
         return (
