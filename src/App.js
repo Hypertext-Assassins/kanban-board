@@ -30,6 +30,10 @@ class Board extends Component {
     } else this.setState({done: this.state.done.filter(task => task !== formData)})
   }
 
+  handleUpdateCard = (formData, cardType) => {
+    
+  }
+
   render() { 
     return (
       <>
@@ -39,16 +43,19 @@ class Board extends Component {
         todo={this.state.todo}
         handleAddCard={this.handleAddCard}
         handleDeleteCard={this.handleDeleteCard}
+        handleUpdateCard={this.handleUpdateCard}
       />
       <InProgress
         inProgress={this.state.inProgress}
         handleAddCard={this.handleAddCard}
         handleDeleteCard={this.handleDeleteCard}
+        handleUpdateCard={this.handleUpdateCard}
       />
       <Done
         done={this.state.done}
         handleAddCard={this.handleAddCard}
         handleDeleteCard={this.handleDeleteCard}
+        handleUpdateCard={this.handleUpdateCard}
       />
       </div>
 
