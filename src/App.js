@@ -1,15 +1,13 @@
 import React, {Component} from 'react';
 import './App.css';
-import Todo from './components/Todo';
-import InProgress from './components/InProgress';
-import Done from './components/Done';
+import Column from './components/Column';
 
 class Board extends Component {
-  state = {
-    todo: ["test for todo state"],
-    inProgress: ["inprogress state"],
-    done: ["done state"]
-  }
+  // state = {
+    // todo: ["test for todo state"],
+  //   inProgress: ["inprogress state"],
+  //   done: ["done state"]
+  // }
 
   state ={
     columns: [
@@ -28,17 +26,25 @@ class Board extends Component {
     ]
   }
 
-  handleAddCard2 = (formData, cardType) => {
-    
-  }
+  
 
   handleAddCard = (formData, cardType) => {
-    if (cardType === "todo") {
-      this.setState({todo: [...this.state.todo, formData]})
-    } else if (cardType === "inProgress") {
-      this.setState({inProgress: [...this.state.inProgress, formData]})
-    } else this.setState({done: [...this.state.done, formData]})
+    let index;
+    for (let i = 0; i< this.state.columns.length; i++) {
+      if (this.state.columns[i].name === cardType) index = i
+    }
+    let stateCopy = Object.assign({}, this.state);
+    stateCopy.columns[index].tasks.push(formData);
+    this.setState(stateCopy);
   }
+
+  // handleAddCard1 = (formData, cardType) => {
+  //   if (cardType === "todo") {
+  //     this.setState({todo: [...this.state.todo, formData]})
+  //   } else if (cardType === "inProgress") {
+  //     this.setState({inProgress: [...this.state.inProgress, formData]})
+  //   } else this.setState({done: [...this.state.done, formData]})
+  // }
 
   handleDeleteCard = (formData, cardType) => {
     if (cardType ==="todo"){
@@ -57,7 +63,16 @@ class Board extends Component {
       <>
       <div>hello</div>
       <div className="container">
-      <Todo
+        {this.state.columns.map(column => 
+          <Column 
+            name={column.name}
+            tasks={column.tasks}
+            handleAddCard={this.handleAddCard}
+            handleDeleteCard={this.handleDeleteCard}
+            handleUpdateCard={this.handleUpdateCard}
+          />
+        )}
+      {/* <Todo
         todo={this.state.todo}
         handleAddCard={this.handleAddCard}
         handleDeleteCard={this.handleDeleteCard}
@@ -74,7 +89,7 @@ class Board extends Component {
         handleAddCard={this.handleAddCard}
         handleDeleteCard={this.handleDeleteCard}
         handleUpdateCard={this.handleUpdateCard}
-      />
+      /> */}
       </div>
 
       </>
