@@ -4,6 +4,7 @@ import './App.css';
 import Todo from './components/Todo';
 import InProgress from './components/InProgress';
 import Done from './components/Done';
+import Overlay from './components/Overlay';
 
 class Board extends Component {
   state = {
@@ -18,6 +19,7 @@ class Board extends Component {
       <Todo/>
       <InProgress/>
       <Done/>
+      <Overlay />
       </>
     );
   }
