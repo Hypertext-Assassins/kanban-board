@@ -7,7 +7,7 @@ const FormOverlay =  (props) => {
   return ( 
     <>
       <OverlayTrigger trigger="click" placement="right" overlay={
-        <AddTask addCard={props.addCard}/>
+        <AddTask handleAddCard={props.handleAddCard}/>
       }>
         <Button variant="success">Click me to see</Button>
       </OverlayTrigger>
