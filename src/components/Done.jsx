@@ -1,8 +1,13 @@
 import React from 'react';
 
-const Done = () => {
+const Done = (props) => {
     return (
+        <>
         <div>Done</div>
+        {props.done.map((el) =>
+            <p>{el}</p>
+        )}
+        </>  
     );
 }
  

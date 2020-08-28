@@ -8,18 +8,30 @@ import Overlay from './components/Overlay';
 
 class Board extends Component {
   state = {
-    todo: [],
-    inProgress: [],
-    done: []
+    todo: ["test for todo state"],
+    inProgress: ["inprogress state"],
+    done: ["done state"]
   }
+
+  addCard = () => {
+
+  }
+
   render() { 
     return (
       <>
       <div>hello</div>
-      <Todo/>
-      <InProgress/>
-      <Done/>
+      <Todo
+        todo={this.state.todo}
+      />
+      <InProgress
+        inProgress={this.state.inProgress}
+      />
+      <Done
+        done={this.state.done}
+      />
       <Overlay />
+
       </>
     );
   }

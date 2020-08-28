@@ -1,8 +1,13 @@
 import React from 'react';
 
-const InProgress = () => {
+const InProgress = (props) => {
     return (
+        <>
         <div>InProgress</div>
+        {props.inProgress.map((el) =>
+            <p>{el}</p>
+        )}
+        </>  
     );
 }
  
