@@ -4,7 +4,7 @@ import './App.css';
 import Todo from './components/Todo';
 import InProgress from './components/InProgress';
 import Done from './components/Done';
-import Overlay from './components/Overlay';
+import Overlay from './components/FormOverlay';
 
 class Board extends Component {
   state = {
