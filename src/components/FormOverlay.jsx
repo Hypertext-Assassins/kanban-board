@@ -2,7 +2,16 @@ import React, {useState, useRef } from 'react'
 import { Button, Popover, OverlayTrigger } from 'react-bootstrap'
 import AddTask from '../components/AddTask';
 
+
+
 const FormOverlay =  (props) => {
+
+  const [formDisplay, setFormDisplay] = useState(true);
+
+  const handleClick = () => {
+    if (formDisplay) setFormDisplay(false);
+    else setFormDisplay(true);
+  }
 
   return ( 
     <>
@@ -11,7 +20,16 @@ const FormOverlay =  (props) => {
           cardType={props.cardType}
         />
       }>
-        <Button variant="success">Click me to see</Button>
+        {
+          (formDisplay) ?
+        <Button variant="success" 
+        onClick={handleClick}
+        >+</Button>
+        :
+        <Button variant="success" 
+        onClick={handleClick}
+        >-</Button>
+      }
       </OverlayTrigger>
       </>
    );
