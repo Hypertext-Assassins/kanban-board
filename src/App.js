@@ -21,6 +21,7 @@ class Board extends Component {
     return (
       <>
       <div>hello</div>
+      <div className="container">
       <Todo
         todo={this.state.todo}
       />
@@ -30,6 +31,7 @@ class Board extends Component {
       <Done
         done={this.state.done}
       />
+      </div>
       <FormOverlay 
         handleAddCard={this.handleAddCard}
       />

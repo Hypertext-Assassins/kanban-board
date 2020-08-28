@@ -1,0 +1,21 @@
+.container-list {
+    margin: 30px 30px;
+    width: auto;
+    text-align: center;
+    grid: inline;
+}
+
+.todo {
+    /* column-width: 100px;
+    border: 2px solid black;
+    width: fit-content; */
+    
+}
+
+
+.header {
+    font-weight: 500;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    border-bottom: 1px solid black;
+}
