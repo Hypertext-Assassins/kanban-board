@@ -13,8 +13,12 @@ class Board extends Component {
     done: ["done state"]
   }
 
-  handleAddCard = (formData) => {
-    this.setState({todo: [...this.state.todo, formData]})
+  handleAddCard = (formData, cardType) => {
+    if (cardType === "todo") {
+      this.setState({todo: [...this.state.todo, formData]})
+    } else if (cardType === "inProgress") {
+      this.setState({inProgress: [...this.state.inProgress, formData]})
+    } else this.setState({done: [...this.state.done, formData]})
   }
 
   render() { 
@@ -24,12 +28,15 @@ class Board extends Component {
       <div className="container">
       <Todo
         todo={this.state.todo}
+        handleAddCard={this.handleAddCard}
       />
       <InProgress
         inProgress={this.state.inProgress}
+        handleAddCard={this.handleAddCard}
       />
       <Done
         done={this.state.done}
+        handleAddCard={this.handleAddCard}
       />
       </div>
       <FormOverlay 

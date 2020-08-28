@@ -8,7 +8,7 @@ class FormOverlay extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        this.props.handleAddCard(this.state.formData)
+        this.props.handleAddCard(this.state.formData, this.props.cardType)
     } 
 
     handleChange = (e) => {
