@@ -1,10 +1,8 @@
 import React, {Component} from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Todo from './components/Todo';
 import InProgress from './components/InProgress';
 import Done from './components/Done';
-import FormOverlay from './components/FormOverlay';
 
 class Board extends Component {
   state = {
@@ -39,9 +37,6 @@ class Board extends Component {
         handleAddCard={this.handleAddCard}
       />
       </div>
-      <FormOverlay 
-        handleAddCard={this.handleAddCard}
-      />
 
       </>
     );
