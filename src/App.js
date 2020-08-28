@@ -4,7 +4,7 @@ import './App.css';
 import Todo from './components/Todo';
 import InProgress from './components/InProgress';
 import Done from './components/Done';
-import Overlay from './components/FormOverlay';
+import FormOverlay from './components/FormOverlay';
 
 class Board extends Component {
   state = {
@@ -13,8 +13,8 @@ class Board extends Component {
     done: ["done state"]
   }
 
-  addCard = () => {
-
+  handleAddCard = (formData) => {
+    this.setState({todo: [...this.state.todo, formData]})
   }
 
   render() { 
@@ -30,7 +30,9 @@ class Board extends Component {
       <Done
         done={this.state.done}
       />
-      <Overlay />
+      <FormOverlay 
+        handleAddCard={this.handleAddCard}
+      />
 
       </>
     );
