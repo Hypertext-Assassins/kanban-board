@@ -12,7 +12,7 @@ const Column = (props) => {
     //     else setShowDesc(true)
     // }
 
-    const [newColName, setNewColName] = useState("");
+    const [newColName, setNewColName] = useState(props.colName);
 
     const handleSetNewColName = (e) => {
         e.preventDefault();
