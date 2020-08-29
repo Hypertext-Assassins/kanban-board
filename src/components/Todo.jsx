@@ -14,7 +14,12 @@ const Todo = (props) => {
         {props.todo.map((el) =>
         <>
             <p>{el}</p>
-            <button onClick={()=> props.handleDeleteCard(el, "todo")}>Delete</button>
+            <button 
+                
+                onClick={()=> props.handleDeleteCard(el, "todo")
+                }
+                
+                >Delete</button>
         </>
         )}
         </div>

@@ -13,9 +13,13 @@ const Column = (props) => {
         />
         {props.tasks.map((el) =>
             <div>
-            <p>{el}</p>
-            <button onClick={()=> props.handleDeleteCard(el, props.name)}>Delete</button>
-            <button onClick={() => props.handleUpdateCard(el, props.name)}>Update</button>
+            <p className="todo">{el}</p>
+            <button 
+                className="ui black button"
+                onClick={()=> props.handleDeleteCard(el, props.name)}>Delete</button>
+            <button 
+                className="ui blue button"
+                onClick={() => props.handleUpdateCard(el, props.name)}>Update</button>
             </div>
         )}
         </div>
