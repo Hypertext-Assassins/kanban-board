@@ -1,18 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, Component } from 'react';
 import './List.css';
 import FormOverlay from './FormOverlay';
 import Task from './Task';
 
-const Column = (props) => {
+const Column = (props) => {    
 
-    // const [showDesc, setShowDesc] = useState(false);
-
-    // const handleClick = () => {
-    //     if (showDesc) setShowDesc(false)
-    //     else setShowDesc(true)
-    // }
-
-    const [newColName, setNewColName] = useState(props.colName);
+    const [newColName, setNewColName] = useState("");
 
     const handleSetNewColName = (e) => {
         e.preventDefault();
@@ -52,3 +45,57 @@ const Column = (props) => {
 }
  
 export default Column;
+
+// class Column extends Component {
+//     state = {
+//         formData: ""
+//     }
+
+//     handleSubmit = (e) => {
+//         e.preventDefault();
+//         console.log(this.state.formData)
+//         this.props.handleUpdateColName(this.props.colName, this.state.formData)
+//     } 
+
+//     handleChange = (e) => {
+//         this.setState({formData: e.target.value})
+//     }
+
+
+//     render() {
+//         return (
+//             <>
+//             <div className="container-list">
+//             <form onSubmit={this.handleSubmit}>
+//                 <input 
+//                     className="header"
+//                     placeholder={this.props.colName}
+//                     onChange={this.handleChange}
+//                 />
+//             </form>
+        
+//             <div>{this.props.colName}</div>
+
+//             <button className="ui button" onClick={() => this.props.handleDeleteCol(this.props.colName)} >Delete Column</button>
+//             <FormOverlay 
+//                 handleAddCard={this.props.handleAddCard}
+//                 colName={this.props.colName}
+//             />
+//             {this.props.tasks.map((el) =>
+//                 <div>
+//                 <Task 
+//                     title={el.title}
+//                     description={el.description}
+//                     task={el}
+//                     handleDeleteCard={this.props.handleDeleteCard}
+//                     colName={this.props.colName}
+//                 />
+//                 </div>
+//             )}
+//             </div>
+//             </>  
+//         );
+//     }
+// }
+
+// export default Column;

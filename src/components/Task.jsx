@@ -7,6 +7,7 @@ const Task = (props) => {
         if (showDesc) setShowDesc(false)
         else setShowDesc(true)
     }
+
     return (  
         <>
         <p className="todo">{props.title}</p>
