@@ -13,15 +13,21 @@ class Board extends Component {
     columns: [
       {
         name: "todo",
-        tasks: ["test todo"]
+        tasks: [{title: "test todo",
+                description: "todo description"
+                }]
       },
       {
         name: "inProgress",
-        tasks: ["test inprogr"]
+        tasks: [{title: "inprog todo",
+                description: "inprog description"
+                }]
       },
       {
         name: "done",
-        tasks: ["test done"]
+        tasks: [{title: "test done",
+                description: "done description"
+                }]
       }
     ],
     newColName: ""

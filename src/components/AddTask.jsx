@@ -3,7 +3,10 @@ import {Popover } from 'react-bootstrap';
 
 class AddTask extends Component {
     state = { 
-        formData: ""
+        formData: {
+            title: "",
+            description: ""
+        }
      }
 
     handleSubmit = (e) => {
@@ -11,8 +14,12 @@ class AddTask extends Component {
         this.props.handleAddCard(this.state.formData, this.props.cardType)
     } 
 
+    // handleChange = (e) => {
+    //     this.setState({formData: e.target.value})
+    // }
     handleChange = (e) => {
-        this.setState({formData: e.target.value})
+        const formData = {...this.state.formData, [e.target.name]: e.target.value}
+        this.setState({formData})
     }
     render() { 
         return (
@@ -21,8 +28,13 @@ class AddTask extends Component {
         <Popover.Content>
         <form onSubmit={this.handleSubmit}>
         <input
-            placeholder='enter your task here'
-            name="task"
+            placeholder='enter your task title'
+            name="title"
+            onChange={this.handleChange}
+        ></input>
+        <input
+            placeholder='enter your task description'
+            name="description"
             onChange={this.handleChange}
         ></input>
         <button type="submit">Submit</button>
