@@ -15,6 +15,7 @@ const Column = (props) => {
         <>
         <div className="container-list">
         <div className="header">{props.name}</div>
+        <button onClick={() => props.handleDeleteCol(props.name)} >Delete Column</button>
         <FormOverlay 
             handleAddCard={props.handleAddCard}
             cardType={props.name}
