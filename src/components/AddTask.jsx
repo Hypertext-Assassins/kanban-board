@@ -15,9 +15,6 @@ class AddTask extends Component {
         this.props.handleShowForm();
     } 
 
-    // handleChange = (e) => {
-    //     this.setState({formData: e.target.value})
-    // }
     handleChange = (e) => {
         const formData = {...this.state.formData, [e.target.name]: e.target.value}
         this.setState({formData})

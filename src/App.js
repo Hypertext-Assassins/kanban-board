@@ -3,12 +3,6 @@ import './App.css';
 import Column from './components/Column';
 
 class Board extends Component {
-  // state = {
-    // todo: ["test for todo state"],
-  //   inProgress: ["inprogress state"],
-  //   done: ["done state"]
-  // }
-
   state ={
     columns: [
       {
@@ -33,6 +27,13 @@ class Board extends Component {
     newColName: ""
   }
 
+  getIndex = (colName) => {
+    let index;
+    for (let i = 0; i< this.state.columns.length; i++) {
+      if (this.state.columns[i].name === colName) index = i;
+    } return index;
+  }
+
   /////////// COLUMN FUNCTIONS
 
   handleAddColumn = (e) => {
@@ -49,38 +50,31 @@ class Board extends Component {
   }
 
   handleDeleteCol = (colName) => {
-    let index;
-    for (let i = 0; i< this.state.columns.length; i++) {
-      if (this.state.columns[i].name === colName) index = i
-    }
+    const index = this.getIndex(colName);
     let stateCopy = Object.assign({}, this.state);
     stateCopy.columns.splice(index, 1);
     this.setState(stateCopy)
   }
 
   handleUpdateColName = (colName, newName) => {
-    console.log(colName)
+    const index = this.getIndex(colName);
+    let stateCopy = Object.assign({}, this.state);
+    stateCopy.columns[index].name = newName;
+    this.setState(stateCopy)
     console.log(this.state)
-    console.log(newName)
   }
 
   /////////// CARD FUNCTIONS
 
   handleAddCard = (formData, colName) => {
-    let index;
-    for (let i = 0; i< this.state.columns.length; i++) {
-      if (this.state.columns[i].name === colName) index = i
-    }
+    const index = this.getIndex(colName);
     let stateCopy = Object.assign({}, this.state);
     stateCopy.columns[index].tasks.push(formData);
     this.setState(stateCopy);
   }
 
   handleDeleteCard = (formData, colName) => {
-    let index;
-    for (let i = 0; i< this.state.columns.length; i++) {
-      if (this.state.columns[i].name === colName) index = i
-    }
+    const index = this.getIndex(colName);
     let stateCopy = Object.assign({}, this.state);
     let newTaskArr = stateCopy.columns[index].tasks.filter(task => task !== formData);
     stateCopy.columns[index].tasks = newTaskArr;
