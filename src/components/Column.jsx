@@ -13,7 +13,8 @@ const Column = (props) => {
         />
         {props.tasks.map((el) =>
             <div>
-            <p className="todo">{el}</p>
+            <p className="todo">{el.title}</p>
+            <p>{el.description}</p>
             <button 
                 className="ui black button"
                 onClick={()=> props.handleDeleteCard(el, props.name)}>Delete</button>
