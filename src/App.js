@@ -27,9 +27,10 @@ class Board extends Component {
     newColName: ""
   }
 
+  /////////// ADD NEW COLUMN
+
   handleAddColumn = (e) => {
     e.preventDefault();
-    console.log("hi")
     let newColumn = {
       name: this.state.newColName,
       tasks: []
@@ -40,6 +41,8 @@ class Board extends Component {
   handleAddColChange = (e) => {
     this.setState({newColName: e.target.value})
   }
+
+  ///////////
 
   handleAddCard = (formData, cardType) => {
     let index;
@@ -85,7 +88,7 @@ class Board extends Component {
   render() { 
     return (
       <>
-      <div>hello</div>
+      <div>hypertext assassins kanban board</div>
       <form onSubmit={this.handleAddColumn}>
         <input onChange={this.handleAddColChange} ></input>
         <button type="submit">Add New Column</button>
