@@ -15,11 +15,15 @@ const Column = (props) => {
     return (
         <>
         <div className="container-list">
-        <div className="header">{props.name}</div>
-        <button onClick={() => props.handleDeleteCol(props.name)} >Delete Column</button>
+        <div
+            className="header"
+            contentEditable={true}
+            onClick={(e) => props.handleUpdateColName(props.colName, e.target.value)}
+        >{props.colName}</div>
+        <button className="ui button" onClick={() => props.handleDeleteCol(props.colName)} >Delete Column</button>
         <FormOverlay 
             handleAddCard={props.handleAddCard}
-            cardType={props.name}
+            colName={props.colName}
         />
         {props.tasks.map((el) =>
             <div>
@@ -28,8 +32,7 @@ const Column = (props) => {
                 description={el.description}
                 task={el}
                 handleDeleteCard={props.handleDeleteCard}
-                handleUpdateCard={props.handleUpdateCard}
-                colName={props.name}
+                colName={props.colName}
             />
             </div>
         )}

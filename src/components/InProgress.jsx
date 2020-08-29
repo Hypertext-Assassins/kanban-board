@@ -9,7 +9,7 @@ const InProgress = (props) => {
         <div className="header">InProgress</div>
         <FormOverlay 
             handleAddCard={props.handleAddCard}
-            cardType="inProgress"
+            colName="inProgress"
         />
         {props.inProgress.map((el) =>
         <>

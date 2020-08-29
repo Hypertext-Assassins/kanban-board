@@ -14,20 +14,19 @@ const Task = (props) => {
             <>
             <p>{props.description}</p>
                 <button
+                    className="ui button"
                     onClick={handleClick}
-                >Hide Task Details</button>
+                >Hide Details</button>
             </>
                 :
                 <button
+                    className="ui button"
                     onClick={handleClick}
-                >Show Task Details</button>
+                >Show Details</button>
             }
             <button 
                 className="ui black button"
                 onClick={()=> props.handleDeleteCard(props.task, props.colName)}>Delete</button>
-            <button 
-                className="ui blue button"
-                onClick={() => props.handleUpdateCard(props.task, props.colName)}>Update</button>
         </>
     );
 }
