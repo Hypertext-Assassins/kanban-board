@@ -12,14 +12,24 @@ const Column = (props) => {
     //     else setShowDesc(true)
     // }
 
+    const [newColName, setNewColName] = useState("");
+
+    const handleSetNewColName = (e) => {
+        e.preventDefault();
+        props.handleUpdateColName(props.colName, newColName);
+    }
+
     return (
         <>
         <div className="container-list">
-        <div
-            className="header"
-            contentEditable={true}
-            onClick={(e) => props.handleUpdateColName(props.colName, e.target.value)}
-        >{props.colName}</div>
+        <form onSubmit={handleSetNewColName}>
+            <input 
+                className="header"
+                placeholder={props.colName}
+                onChange={e => setNewColName(e.target.value)}
+            />
+        </form>
+
         <button className="ui button" onClick={() => props.handleDeleteCol(props.colName)} >Delete Column</button>
         <FormOverlay 
             handleAddCard={props.handleAddCard}
