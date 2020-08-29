@@ -23,10 +23,23 @@ class Board extends Component {
         name: "done",
         tasks: ["test done"]
       }
-    ]
+    ],
+    newColName: ""
   }
 
-  
+  handleAddColumn = (e) => {
+    e.preventDefault();
+    console.log("hi")
+    let newColumn = {
+      name: this.state.newColName,
+      tasks: []
+    }
+    this.setState({columns: [...this.state.columns, newColumn]})
+  }
+
+  handleAddColChange = (e) => {
+    this.setState({newColName: e.target.value})
+  }
 
   handleAddCard = (formData, cardType) => {
     let index;
@@ -66,13 +79,17 @@ class Board extends Component {
   // }
 
   handleUpdateCard = (formData, cardType) => {
-    
+
   }
 
   render() { 
     return (
       <>
       <div>hello</div>
+      <form onSubmit={this.handleAddColumn}>
+        <input onChange={this.handleAddColChange} ></input>
+        <button type="submit">Add New Column</button>
+      </form>
       <div className="container">
         {this.state.columns.map(column => 
           <Column 
