@@ -81,7 +81,7 @@ class Board extends Component {
       }
     
     const column = this.state.columns[source.droppableId]
-    const newTasks = Array.from(column.tasks)
+    const newTasks = Array.from(column.taskIds)
     newTasks.splice(source.index, 1);
     newTasks.splice(destination.index, 0, draggableId);
     const newColumn = {
@@ -96,6 +96,8 @@ class Board extends Component {
         [newColumn.id]: newColumn,
       }
     }
+
+    this.setState(newState)
   }
 
   /////////// CARD FUNCTIONS
