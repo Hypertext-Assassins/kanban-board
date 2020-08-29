@@ -47,12 +47,23 @@ class Board extends Component {
   // }
 
   handleDeleteCard = (formData, cardType) => {
-    if (cardType ==="todo"){
-      this.setState({todo: this.state.todo.filter(task => task !== formData)})
-    } else if (cardType ==="inProgress") {
-      this.setState({inProgress: this.state.inProgress.filter(task => task !== formData)})
-    } else this.setState({done: this.state.done.filter(task => task !== formData)})
+    let index;
+    for (let i = 0; i< this.state.columns.length; i++) {
+      if (this.state.columns[i].name === cardType) index = i
+    }
+    let stateCopy = Object.assign({}, this.state);
+    let newTaskArr = stateCopy.columns[index].tasks.filter(task => task !== formData);
+    stateCopy.columns[index].tasks = newTaskArr;
+    this.setState({stateCopy})
   }
+
+  // handleDeleteCard1 = (formData, cardType) => {
+  //   if (cardType ==="todo"){
+  //     this.setState({todo: this.state.todo.filter(task => task !== formData)})
+  //   } else if (cardType ==="inProgress") {
+  //     this.setState({inProgress: this.state.inProgress.filter(task => task !== formData)})
+  //   } else this.setState({done: this.state.done.filter(task => task !== formData)})
+  // }
 
   handleUpdateCard = (formData, cardType) => {
     
