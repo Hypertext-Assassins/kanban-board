@@ -22,11 +22,13 @@ const FormOverlay =  (props) => {
       }>
         {
           (formDisplay) ?
-        <Button variant="success" 
+        <Button variant="success"
+        className="ui button"  
         onClick={handleClick}
         >+</Button>
         :
-        <Button variant="success" 
+        <Button variant="success"
+        className="ui button" 
         onClick={handleClick}
         >-</Button>
       }

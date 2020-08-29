@@ -90,8 +90,14 @@ class Board extends Component {
       <>
       <div>hypertext assassins kanban board</div>
       <form onSubmit={this.handleAddColumn}>
-        <input onChange={this.handleAddColChange} ></input>
-        <button type="submit">Add New Column</button>
+        <div className="ui input">
+          <input 
+            className="ui input" 
+            onChange={this.handleAddColChange} ></input>
+          </div>
+        <button 
+          className="ui button"
+          type="submit">Add New Column</button>
       </form>
       <div className="container">
         {this.state.columns.map(column => 
@@ -103,6 +109,7 @@ class Board extends Component {
             handleUpdateCard={this.handleUpdateCard}
           />
         )}
+        
       {/* <Todo
         todo={this.state.todo}
         handleAddCard={this.handleAddCard}

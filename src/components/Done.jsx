@@ -14,7 +14,9 @@ const Done = (props) => {
         {props.done.map((el) =>
         <>
             <p>{el}</p>
-            <button onClick={()=> props.handleDeleteCard(el, "done")}>Delete</button>
+            
+            <button  onClick={()=> props.handleDeleteCard(el, "done")}>Delete</button>
+            
         </>
         )}
         </div>
