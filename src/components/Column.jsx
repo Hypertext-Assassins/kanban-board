@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import './List.css';
 import FormOverlay from './FormOverlay';
+import Task from './Task';
 
 const Column = (props) => {
 
-    const [showDesc, setShowDesc] = useState(false);
+    // const [showDesc, setShowDesc] = useState(false);
 
-    const handleClick = () => {
-        if (showDesc) setShowDesc(false)
-        else setShowDesc(true)
-    }
+    // const handleClick = () => {
+    //     if (showDesc) setShowDesc(false)
+    //     else setShowDesc(true)
+    // }
 
     return (
         <>
@@ -22,25 +23,14 @@ const Column = (props) => {
         />
         {props.tasks.map((el) =>
             <div>
-            <p className="todo">{el.title}</p>
-            {(showDesc) ?
-            <>
-            <p>{el.description}</p>
-                <button
-                    onClick={handleClick}
-                >Hide Task Details</button>
-            </>
-                :
-                <button
-                    onClick={handleClick}
-                >Show Task Details</button>
-            }
-            <button 
-                className="ui black button"
-                onClick={()=> props.handleDeleteCard(el, props.name)}>Delete</button>
-            <button 
-                className="ui blue button"
-                onClick={() => props.handleUpdateCard(el, props.name)}>Update</button>
+            <Task 
+                title={el.title}
+                description={el.description}
+                task={el}
+                handleDeleteCard={props.handleDeleteCard}
+                handleUpdateCard={props.handleUpdateCard}
+                colName={props.name}
+            />
             </div>
         )}
         </div>
