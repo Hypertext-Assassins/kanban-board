@@ -33,7 +33,7 @@ class Board extends Component {
     newColName: ""
   }
 
-  /////////// ADD NEW COLUMN
+  /////////// COLUMN FUNCTIONS
 
   handleAddColumn = (e) => {
     e.preventDefault();
@@ -46,6 +46,17 @@ class Board extends Component {
 
   handleAddColChange = (e) => {
     this.setState({newColName: e.target.value})
+  }
+
+  handleDeleteCol = (colName) => {
+    let index;
+    for (let i = 0; i< this.state.columns.length; i++) {
+      if (this.state.columns[i].name === colName) index = i
+    }
+    
+    let stateCopy = Object.assign({}, this.state);
+    stateCopy.columns.splice(index, 1);
+    this.setState(stateCopy)
   }
 
   ///////////
@@ -110,6 +121,7 @@ class Board extends Component {
           <Column 
             name={column.name}
             tasks={column.tasks}
+            handleDeleteCol={this.handleDeleteCol}
             handleAddCard={this.handleAddCard}
             handleDeleteCard={this.handleDeleteCard}
             handleUpdateCard={this.handleUpdateCard}
