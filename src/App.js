@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import Column from './components/Column';
+import { DragDropContext } from 'react-beautiful-dnd';
 
 class Board extends Component {
   state ={
@@ -66,6 +67,37 @@ class Board extends Component {
     console.log(this.state)
   }
 
+  onDragEnd = result => {
+    //TO DO REORDER THE COLUMN
+    const { destination, source, draggableId } = result
+
+    if (!destination) {
+      return;
+    }
+
+    if (destination.droppableId === source.droppableId &&
+        destination.index === source.index) {
+        return
+      }
+    
+    const column = this.state.columns[source.droppableId]
+    const newTasks = Array.from(column.tasks)
+    newTasks.splice(source.index, 1);
+    newTasks.splice(destination.index, 0, draggableId);
+    const newColumn = {
+      ...column,
+      tasks: newTasks
+    };
+
+    const newState = {
+      ...this.state,
+      columns: {
+        ...this.state.columns,
+        [newColumn.id]: newColumn,
+      }
+    }
+  }
+
   /////////// CARD FUNCTIONS
 
   handleAddCard = (formData, colName) => {
@@ -98,19 +130,20 @@ class Board extends Component {
           className="ui button"
           type="submit">Add New Column</button>
       </form>
-      <div className="container">
-        {this.state.columns.map(column => 
-          <Column 
-            colName={column.name}
-            tasks={column.tasks}
-            handleDeleteCol={this.handleDeleteCol}
-            handleAddCard={this.handleAddCard}
-            handleDeleteCard={this.handleDeleteCard}
-            handleUpdateColName={this.handleUpdateColName}
-          />
-        )}
-    
-      </div>
+      <DragDropContext onDragEnd={this.onDragEnd}>
+        <div className="container">
+          {this.state.columns.map(column => 
+            <Column 
+              colName={column.name}
+              tasks={column.tasks}
+              handleDeleteCol={this.handleDeleteCol}
+              handleAddCard={this.handleAddCard}
+              handleDeleteCard={this.handleDeleteCard}
+              handleUpdateColName={this.handleUpdateColName}
+            />
+          )}
+        </div>
+      </DragDropContext>
 
       </>
     );
