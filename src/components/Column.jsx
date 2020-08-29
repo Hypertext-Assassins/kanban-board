@@ -2,6 +2,7 @@ import React, { useState, Component } from 'react';
 import './List.css';
 import FormOverlay from './FormOverlay';
 import Task from './Task';
+import { Droppable } from 'react-beautiful-dnd';
 
 const Column = (props) => {    
 
@@ -40,7 +41,28 @@ const Column = (props) => {
             handleAddCard={props.handleAddCard}
             colName={props.colName}
         />
-        {props.tasks.map((el) =>
+        <Droppable droppableId={props.colName}>
+            {provided => (
+                <div
+                    ref={provided.innerRef}
+                    {...provided.droppableProps}
+                >
+                    {props.tasks.map((el, idx) =>
+                <div>
+                    <Task 
+                        title={el.title}
+                        description={el.description}
+                        task={el}
+                        idx={idx}
+                        handleDeleteCard={props.handleDeleteCard}
+                        colName={props.colName}
+                    />
+                </div>
+                )}
+                </div>
+            )}
+        </Droppable>
+        {/* {props.tasks.map((el) =>
             <div>
             <Task 
                 title={el.title}
@@ -50,7 +72,7 @@ const Column = (props) => {
                 colName={props.colName}
             />
             </div>
-        )}
+        )} */}
         </div>
         </>  
     );
