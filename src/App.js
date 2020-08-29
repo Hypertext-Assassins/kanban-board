@@ -38,8 +38,9 @@ class Board extends Component {
 
   handleAddColumn = (e) => {
     e.preventDefault();
+    const columnTitle = this.state.createColName || "New Column"
     let newColumn = {
-      name: this.state.createColName,
+      name: columnTitle,
       tasks: []
     }
     this.setState({columns: [...this.state.columns, newColumn]})
