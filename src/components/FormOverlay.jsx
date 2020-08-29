@@ -15,17 +15,22 @@ const FormOverlay = (props) => {
 
   return ( 
     <>
+<!-- <<<<<<< skylar
+      <OverlayTrigger trigger="click" placement="right" overlay={
+        <AddTask handleAddCard={props.handleAddCard} 
+          colName={props.colName}
+======= -->
       <OverlayTrigger trigger="click" placement="right" show={formDisplay} overlay={
         <AddTask 
           handleAddCard={props.handleAddCard} 
-          cardType={props.cardType}
+          colName={props.colName}
           handleShowForm={handleShowForm}
         />
       }>
         {
           (!formDisplay) ?
         <Button variant="success"
-        className="ui button"  
+        className="ui blue button"  
         onClick={handleShowForm}
         >+</Button>
         :

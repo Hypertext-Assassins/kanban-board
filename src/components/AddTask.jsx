@@ -11,8 +11,8 @@ class AddTask extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
+        this.props.handleAddCard(this.state.formData, this.props.colName)
         this.props.handleShowForm();
-        this.props.handleAddCard(this.state.formData, this.props.cardType)
     } 
 
     // handleChange = (e) => {
