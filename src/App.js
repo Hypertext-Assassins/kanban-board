@@ -24,7 +24,7 @@ class Board extends Component {
                 }]
       }
     ],
-    newColName: ""
+    createColName: ""
   }
 
   getIndex = (colName) => {
@@ -39,14 +39,14 @@ class Board extends Component {
   handleAddColumn = (e) => {
     e.preventDefault();
     let newColumn = {
-      name: this.state.newColName,
+      name: this.state.createColName,
       tasks: []
     }
     this.setState({columns: [...this.state.columns, newColumn]})
   }
 
   handleAddColChange = (e) => {
-    this.setState({newColName: e.target.value})
+    this.setState({createColName: e.target.value})
   }
 
   handleDeleteCol = (colName) => {
@@ -56,8 +56,9 @@ class Board extends Component {
     this.setState(stateCopy)
   }
 
-  handleUpdateColName = (colName, newName) => {
-    const index = this.getIndex(colName);
+  handleUpdateColName = async (colName, newName) => {
+    console.log(this.state)
+    const index = await this.getIndex(colName);
     let stateCopy = Object.assign({}, this.state);
     stateCopy.columns[index].name = newName;
     this.setState(stateCopy)
