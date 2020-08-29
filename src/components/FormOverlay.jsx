@@ -4,32 +4,34 @@ import AddTask from '../components/AddTask';
 
 
 
-const FormOverlay =  (props) => {
+const FormOverlay = (props) => {
 
-  const [formDisplay, setFormDisplay] = useState(true);
+  const [formDisplay, setFormDisplay] = useState(false);
 
-  const handleClick = () => {
+  const handleShowForm = () => {
     if (formDisplay) setFormDisplay(false);
     else setFormDisplay(true);
   }
 
   return ( 
     <>
-      <OverlayTrigger trigger="click" placement="right" overlay={
-        <AddTask handleAddCard={props.handleAddCard} 
+      <OverlayTrigger trigger="click" placement="right" show={formDisplay} overlay={
+        <AddTask 
+          handleAddCard={props.handleAddCard} 
           cardType={props.cardType}
+          handleShowForm={handleShowForm}
         />
       }>
         {
-          (formDisplay) ?
+          (!formDisplay) ?
         <Button variant="success"
         className="ui button"  
-        onClick={handleClick}
+        onClick={handleShowForm}
         >+</Button>
         :
         <Button variant="success"
         className="ui button" 
-        onClick={handleClick}
+        onClick={handleShowForm}
         >-</Button>
       }
       </OverlayTrigger>
