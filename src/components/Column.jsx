@@ -5,24 +5,36 @@ import Task from './Task';
 
 const Column = (props) => {    
 
-    const [newColName, setNewColName] = useState("");
+    const [newColName, setNewColName] = useState(props.colName)
+    const [showForm, setShowForm] = useState(false)
+
 
     const handleSetNewColName = (e) => {
         e.preventDefault();
+        setShowForm(false);
         props.handleUpdateColName(props.colName, newColName);
+    }
+
+    const handleShowForm = () => {
+        setShowForm(true)
     }
 
     return (
         <>
         <div className="container-list">
-        <form onSubmit={handleSetNewColName}>
+        {showForm ?
+        <form onSubmit={handleSetNewColName} hidden={!showForm} >
             <input 
                 className="header"
                 placeholder={props.colName}
                 onChange={e => setNewColName(e.target.value)}
             />
         </form>
-
+        :
+        <div className="header"
+        onClick={handleShowForm}
+        
+        >{props.colName}</div> }
         <button className="ui button" onClick={() => props.handleDeleteCol(props.colName)} >Delete Column</button>
         <FormOverlay 
             handleAddCard={props.handleAddCard}
