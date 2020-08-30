@@ -146,6 +146,7 @@ class Board extends Component {
         <div className="container">
           {this.state.columns.map(column => 
             <Column 
+              key={column.name}
               colName={column.name}
               tasks={column.tasks}
               handleDeleteCol={this.handleDeleteCol}
