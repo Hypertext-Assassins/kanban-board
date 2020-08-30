@@ -79,25 +79,32 @@ class Board extends Component {
         destination.index === source.index) {
         return
       }
-    
-    const column = this.state.columns[source.droppableId]
-    const newTasks = Array.from(column.taskIds)
-    newTasks.splice(source.index, 1);
-    newTasks.splice(destination.index, 0, draggableId);
-    const newColumn = {
-      ...column,
-      tasks: newTasks
-    };
 
-    const newState = {
-      ...this.state,
-      columns: {
-        ...this.state.columns,
-        [newColumn.id]: newColumn,
-      }
+    const newIndex = this.getIndex(source.droppableId) //getidx of todo which is 0
+    const column = this.state.columns[newIndex] //current col
+
+    let idx2;
+    for(let i=0; i<column.tasks.length; i++){
+      if (column.tasks[i].title === draggableId) idx2=i;
     }
 
+    let taskObj = column.tasks[idx2];
+    const newTasks = column.tasks;
+    newTasks.splice(source.index, 1);
+    newTasks.splice(destination.index, 0, taskObj);
+
+    const newColArr = this.state.columns;
+    let colIdx = this.getIndex(source.droppableId)
+    const newList = {
+      name: source.droppableId,
+      tasks: newTasks
+    }
+    newColArr.splice(colIdx, 1, newList)
+    const newState = {columns: newColArr}
+    console.log(this.state)
+    console.log(newState)
     this.setState(newState)
+    
   }
 
   /////////// CARD FUNCTIONS
