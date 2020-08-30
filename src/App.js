@@ -78,20 +78,18 @@ class Board extends Component {
     if (destination.droppableId === source.droppableId && destination.index === source.index) {
       return
     }
-
+    /////// IF MOVING COLUMN
     if (type === 'column') {
-      const newColOrder = Array.from(this.state.columns);
-      console.log(newColOrder);
-      newColOrder.splice(source.index, 1);
-      newColOrder.splice(destination.index, 0, draggableId);
-      
-      const newState = {columns: newColOrder}
-      this.setState(newState)
+      const newColOrder = this.state.columns;
+      const colIdx = this.getIndex(draggableId);  //get idx of col being dragged (draggableId is column.name)
+      const currentCol = newColOrder[colIdx]; //currentCol = col being dragged
+      newColOrder.splice(source.index, 1);  //remove currentCol from original location
+      newColOrder.splice(destination.index,0,currentCol) //insert currentCol in new location
+      this.setState({columns: newColOrder})
       return
     }
-
-
-
+  
+    //////// IF MOVING TASKS
     const startColIdx = this.getIndex(source.droppableId); //get idx of start column
     const endColIdx = this.getIndex(destination.droppableId)  //get idx of ending column
     const startCol = this.state.columns[startColIdx] // startCol = start col
