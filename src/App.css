@@ -27,3 +27,20 @@
     justify-content: center;
   }
 }
+
+.overlay {
+  padding: 10px 10px 10px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+  height: fit-content;
+  margin-top: 30%;
+  color: white;
+  background-color: #596467;
+  text-align: center;
+}
+
+#exit {
+  border-radius: 30%;
+}
