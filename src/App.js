@@ -99,7 +99,7 @@ class Board extends Component {
       name: source.droppableId,
       tasks: newTasks
     }
-    newColArr.splice(endColIdx, 1, newColObj) //replace ending col with the new obj (this only works if moving within same col) 
+    newColArr.splice(startColIdx, 1, newColObj) //replace with newColObj, currently this is using startColIdx (since current code only allows chnages for current col) but this hsoudl be changed to endColIdx
     const newState = {columns: newColArr}
     this.setState(newState)
   }
