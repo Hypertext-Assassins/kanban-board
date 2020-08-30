@@ -144,9 +144,9 @@ class Board extends Component {
       </form>
       <DragDropContext onDragEnd={this.onDragEnd}>
         <div className="container">
-          {this.state.columns.map(column => 
+          {this.state.columns.map((column, idx) => 
             <Column 
-              key={column.name}
+              key={`${column.name}${idx}`}
               colName={column.name}
               tasks={column.tasks}
               handleDeleteCol={this.handleDeleteCol}
