@@ -50,6 +50,7 @@ const Column = (props) => {
                     {props.tasks.map((el, idx) =>
                 <div>
                     <Task 
+                        key={el.title}
                         title={el.title}
                         description={el.description}
                         task={el}
@@ -59,6 +60,7 @@ const Column = (props) => {
                     />
                 </div>
                 )}
+                {provided.placeholder}
                 </div>
             )}
         </Droppable>
