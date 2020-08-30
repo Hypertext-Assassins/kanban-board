@@ -28,14 +28,14 @@ class Board extends Component {
     createColName: ""
   }
 
+  /////////// COLUMN FUNCTIONS
+
   getIndex = (colName) => {
     let index;
     for (let i = 0; i< this.state.columns.length; i++) {
       if (this.state.columns[i].name === colName) index = i;
     } return index;
   }
-
-  /////////// COLUMN FUNCTIONS
 
   handleAddColumn = (e) => {
     e.preventDefault();
@@ -59,48 +59,54 @@ class Board extends Component {
   }
 
   handleUpdateColName = async (colName, newName) => {
-    console.log(this.state)
     const index = await this.getIndex(colName);
     let stateCopy = Object.assign({}, this.state);
     stateCopy.columns[index].name = newName;
     this.setState(stateCopy)
-    console.log(this.state)
   }
 
+  /////// DRAG AND DROP FUNCTION
   onDragEnd = result => {
-    //TO DO REORDER THE COLUMN
     const { destination, source, draggableId } = result
 
     if (!destination) {
       return;
     }
 
-    if (destination.droppableId === source.droppableId &&
-        destination.index === source.index) {
-        return
-      }
+    if (destination.droppableId === source.droppableId && destination.index === source.index) {
+      return
+    }
 
     const startColIdx = this.getIndex(source.droppableId); //get idx of start column
-    const column = this.state.columns[startColIdx] // column = start col
+    const endColIdx = this.getIndex(destination.droppableId)  //get idx of ending column
+    const startCol = this.state.columns[startColIdx] // startCol = start col
+    const endCol = this.state.columns[endColIdx] // endCol = end col
 
     let idxOfTask;
-    for(let i=0; i<column.tasks.length; i++){
-      if (column.tasks[i].title === draggableId) idxOfTask=i;  //idxOfTask = idx of task being dragged
+    for(let i=0; i<startCol.tasks.length; i++){
+      if (startCol.tasks[i].title === draggableId) idxOfTask=i;  //idxOfTask = idx of task being dragged
     } 
 
-    let taskObj = column.tasks[idxOfTask]; //get the actual object of task being dragged
-    const newTasks = column.tasks;  //variable for array of tasks inside current column
-    newTasks.splice(source.index, 1);  //removes task obj from old location in col array
-    newTasks.splice(destination.index, 0, taskObj);  //inserts taskObj into new location
+    let taskObj = startCol.tasks[idxOfTask]; //get the actual object of task being dragged
+    const newTasksStart = startCol.tasks;  //var for arr of tasks in start col
+    const newTasksEnd = endCol.tasks; //var for arr of tasks in end col
+    
+    newTasksStart.splice(source.index, 1);  //removes task obj that's being dragged from original array
+    newTasksEnd.splice(destination.index, 0, taskObj);  //inserts taskObj into new location
 
-    const newColArr = this.state.columns;  // newColArr = arr of all cols in state
-    let endColIdx = this.getIndex(destination.droppableId)  //get idx of ending column
-    const newColObj = {  //create new obj (with updated tasks arr) that will go inside the columns arrary in state
-      name: source.droppableId,
-      tasks: newTasks
+    const newStartColObj = {  //create new obj with updated tasks from the orignal starting tasks array
+      name: source.droppableId,  
+      tasks: newTasksStart
     }
-    newColArr.splice(endColIdx, 1, newColObj) //replace ending col with the new obj (this only works if moving within same col) 
-    const newState = {columns: newColArr}
+    const newEndColObj = {  //create new obj with updated tasks for teh destination tasks array
+      name: destination.droppableId,  
+      tasks: newTasksEnd
+    }
+    
+    const stateCols = this.state.columns;  // stateCols = arr of all cols in state
+    stateCols.splice(startColIdx, 1, newStartColObj) //replaces starting task obj (located at startColIdx) with the updated starting tasks obj (newStartcolObj)
+    stateCols.splice(endColIdx, 1, newEndColObj) //replaces ending task obj (located at endColIdx) with the updated ending task obj
+    const newState = {columns: stateCols}
     this.setState(newState)
   }
 
