@@ -3,6 +3,7 @@ import './App.css';
 import Column from './components/Column';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import LandingPageOverlay from './components/LandingPageOverlay';
+import HelpOverlay from './components/HelpOverlay';
 
 class Board extends Component {
   state ={
@@ -145,7 +146,10 @@ class Board extends Component {
   render() { 
     return (
       <>
-      <div>hypertext assassins kanban board</div>
+      <div className="top">
+        hypertext assassins kanban board
+        <HelpOverlay />
+      </div>
       <LandingPageOverlay />
       <form onSubmit={this.handleAddColumn}>
         <div className="ui input">
