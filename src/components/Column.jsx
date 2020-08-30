@@ -33,10 +33,11 @@ const Column = (props) => {
         </form>
         :
         <div className="header"
-        onClick={handleShowForm}
-        
-        >{props.colName}</div> }
-        <button className="ui button" onClick={() => props.handleDeleteCol(props.colName)} >Delete Column</button>
+        id="column-title"
+        onClick={handleShowForm}>
+            {props.colName}
+            <button onClick={() => props.handleDeleteCol(props.colName)} ><i className="trash fitted small icon"></i></button>
+        </div> }
         <FormOverlay 
             handleAddCard={props.handleAddCard}
             colName={props.colName}
@@ -44,13 +45,14 @@ const Column = (props) => {
         <Droppable droppableId={props.colName}>
             {provided => (
                 <div
+                    className="droppable"
                     ref={provided.innerRef}
                     {...provided.droppableProps}
                 >
                     {props.tasks.map((el, idx) =>
                 <div>
                     <Task 
-                        key={el.title}
+                        key={`${el.title}${idx}`}
                         title={el.title}
                         description={el.description}
                         task={el}
