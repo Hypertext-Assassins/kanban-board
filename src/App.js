@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import Column from './components/Column';
-import { DragDropContext } from 'react-beautiful-dnd';
+import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
 class Board extends Component {
   state ={
@@ -25,7 +25,7 @@ class Board extends Component {
                 }]
       }
     ],
-    createColName: ""
+    createColName: "",
   }
 
   /////////// COLUMN FUNCTIONS
@@ -67,7 +67,7 @@ class Board extends Component {
 
   /////// DRAG AND DROP FUNCTION
   onDragEnd = result => {
-    const { destination, source, draggableId } = result
+    const { destination, source, draggableId, type } = result
 
     if (!destination) {
       return;
@@ -76,6 +76,19 @@ class Board extends Component {
     if (destination.droppableId === source.droppableId && destination.index === source.index) {
       return
     }
+
+    if (type === 'column') {
+      const newColOrder = Array.from(this.state.columns);
+      console.log(newColOrder);
+      newColOrder.splice(source.index, 1);
+      newColOrder.splice(destination.index, 0, draggableId);
+      
+      const newState = {columns: newColOrder}
+      this.setState(newState)
+      return
+    }
+
+
 
     const startColIdx = this.getIndex(source.droppableId); //get idx of start column
     const endColIdx = this.getIndex(destination.droppableId)  //get idx of ending column
@@ -143,19 +156,25 @@ class Board extends Component {
           type="submit">Add New Column</button>
       </form>
       <DragDropContext onDragEnd={this.onDragEnd}>
-        <div className="container">
-          {this.state.columns.map((column, idx) => 
-            <Column 
-              key={`${column.name}${idx}`}
-              colName={column.name}
-              tasks={column.tasks}
-              handleDeleteCol={this.handleDeleteCol}
-              handleAddCard={this.handleAddCard}
-              handleDeleteCard={this.handleDeleteCard}
-              handleUpdateColName={this.handleUpdateColName}
-            />
+        <Droppable droppableId="all-columns" direction="horizontal" type="column">
+          {provided => (
+            <div className="container" {...provided.droppableProps} ref={provided.innerRef}>
+              {this.state.columns.map((column, idx) => 
+                <Column 
+                  key={`${column.name}${idx}`}
+                  colName={column.name}
+                  idx={idx}
+                  tasks={column.tasks}
+                  handleDeleteCol={this.handleDeleteCol}
+                  handleAddCard={this.handleAddCard}
+                  handleDeleteCard={this.handleDeleteCard}
+                  handleUpdateColName={this.handleUpdateColName}
+                />
+              )}
+              {provided.placeholder}
+            </div>
           )}
-        </div>
+        </Droppable>
       </DragDropContext>
 
       </>

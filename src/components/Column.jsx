@@ -2,7 +2,7 @@ import React, { useState, Component } from 'react';
 import './List.css';
 import FormOverlay from './FormOverlay';
 import Task from './Task';
-import { Droppable } from 'react-beautiful-dnd';
+import { Droppable, Draggable } from 'react-beautiful-dnd';
 
 const Column = (props) => {    
 
@@ -22,9 +22,15 @@ const Column = (props) => {
 
     return (
         <>
-        <div className="container-list">
+        <Draggable draggableId={props.colName} index={props.idx}>
+            {(provided) => (
+        <div 
+            className="container-list" 
+            {...provided.draggableProps}
+            ref={provided.innerRef}
+        >
         {showForm ?
-        <form onSubmit={handleSetNewColName} hidden={!showForm} >
+        <form onSubmit={handleSetNewColName} hidden={!showForm} {...provided.dragHandleProps}>
             <input 
                 className="header"
                 placeholder={props.colName}
@@ -34,7 +40,9 @@ const Column = (props) => {
         :
         <div className="header"
         id="column-title"
-        onClick={handleShowForm}>
+        onClick={handleShowForm}
+        {...provided.dragHandleProps}
+        >
             {props.colName}
             <button onClick={() => props.handleDeleteCol(props.colName)} ><i className="trash fitted small icon"></i></button>
         </div> }
@@ -42,7 +50,7 @@ const Column = (props) => {
             handleAddCard={props.handleAddCard}
             colName={props.colName}
         />
-        <Droppable droppableId={props.colName}>
+        <Droppable droppableId={props.colName} type="task">
             {provided => (
                 <div
                     className="droppable"
@@ -78,6 +86,8 @@ const Column = (props) => {
             </div>
         )} */}
         </div>
+            )}
+        </Draggable>
         </>  
     );
 }
