@@ -80,31 +80,28 @@ class Board extends Component {
         return
       }
 
-    const newIndex = this.getIndex(source.droppableId) //getidx of todo which is 0
-    const column = this.state.columns[newIndex] //current col
+    const startColIdx = this.getIndex(source.droppableId); //get idx of start column
+    const column = this.state.columns[startColIdx] // column = start col
 
-    let idx2;
+    let idxOfTask;
     for(let i=0; i<column.tasks.length; i++){
-      if (column.tasks[i].title === draggableId) idx2=i;
-    }
+      if (column.tasks[i].title === draggableId) idxOfTask=i;  //idxOfTask = idx of task being dragged
+    } 
 
-    let taskObj = column.tasks[idx2];
-    const newTasks = column.tasks;
-    newTasks.splice(source.index, 1);
-    newTasks.splice(destination.index, 0, taskObj);
+    let taskObj = column.tasks[idxOfTask]; //get the actual object of task being dragged
+    const newTasks = column.tasks;  //variable for array of tasks inside current column
+    newTasks.splice(source.index, 1);  //removes task obj from old location in col array
+    newTasks.splice(destination.index, 0, taskObj);  //inserts taskObj into new location
 
-    const newColArr = this.state.columns;
-    let colIdx = this.getIndex(source.droppableId)
-    const newList = {
+    const newColArr = this.state.columns;  // newColArr = arr of all cols in state
+    let endColIdx = this.getIndex(destination.droppableId)  //get idx of ending column
+    const newColObj = {  //create new obj (with updated tasks arr) that will go inside the columns arrary in state
       name: source.droppableId,
       tasks: newTasks
     }
-    newColArr.splice(colIdx, 1, newList)
+    newColArr.splice(endColIdx, 1, newColObj) //replace ending col with the new obj (this only works if moving within same col) 
     const newState = {columns: newColArr}
-    console.log(this.state)
-    console.log(newState)
     this.setState(newState)
-    
   }
 
   /////////// CARD FUNCTIONS
