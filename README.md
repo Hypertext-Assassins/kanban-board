@@ -1,23 +1,20 @@
 # Hypertext Assassin's Kanban Board
 
-### Description ###
-Welcome to the Hypertext Assasins' Kanban Board Project! Organize your tasks by using our Kanban Board Project. 
+### Overview ###
+Welcome to the Hypertext Assasins' Kanban Board Project! This project was created as a front-end CRUD application, using React, for Mintbean's Javascript Bootcamp Olympics Hackathon.
 
-Start by creating your own columns and tasks, then move your items from column to column as you progress through your lists.
+Organize your tasks by using our kanban board, which allows the user to create columns and tasks, move tasks between columns, and also re-order the columns.
 
-If you need help, click on the ? for assistance.
-
-This project was created for Mintbean's Javascript Bootcamp Olympics Hackathon. Check out the footer for more information about the people that created this site.
+For assistance, click the ? at the top right. 
 
 ### Check out the App: ###
 [Hypertext Assassin's Kanban Board Project](https://hypertext-assassins-kanban.herokuapp.com/)
 
 ![Photo of Kanban Board](https://i.imgur.com/nnyPIeN.png)
 
-
-### Technologies ###
+### Technologies Used ###
 - React
-- Node
+- Javascript
 - HTML
 - CSS
 - Semantic UI React
@@ -25,7 +22,15 @@ This project was created for Mintbean's Javascript Bootcamp Olympics Hackathon. 
 - React Beautiful DND
 - React Awesome Reveal
 
+### Next Steps ###
+- user can access context menu through right-click
+- task descriptions can be edited
 
-### Credits ###
+### Credits ### 
+[Mintbean Javascript Olympics Hackathon](https://sites.google.com/mintbean.io/javascriptbootcampolympics/home)
+[davidtheclark react-aria-modal](https://github.com/davidtheclark/react-aria-modal)
 
-Landing Page Overlay: https://github.com/davidtheclark/react-aria-modal
+### LinkedIn ###
+- [Alanna Celanto](https://www.linkedin.com/in/alanna-celentano/)
+- [Crystal Vasquez](https://www.linkedin.com/in/crystal-lynn-vasquez/)
+- [Skylar Wong](https://www.linkedin.com/in/skylar-wong/)
