@@ -73,3 +73,13 @@
 #popover-basic {
   position: fixed;
 }
+
+.hidden-form{
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.show-form{
+  opacity: 1;
+  transition: opacity 0.5s;
+}
