@@ -16,7 +16,7 @@ const FormOverlay = (props) => {
     <>  
       {(!formDisplay) ?
         <button variant="success"
-          className="ui blue button tiny"
+          className="ui teal button tiny"
           id="btn"  
           onClick={handleShowForm}
           ><i className="plus fitted icon"></i></button>
