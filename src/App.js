@@ -57,7 +57,6 @@ class Board extends Component {
     })
   }
 
-
   handleAddColChange = (e) => {
     this.setState({createColName: e.target.value})
   }
