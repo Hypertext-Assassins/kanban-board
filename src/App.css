@@ -43,7 +43,8 @@
 }
 
 #exit {
-  border-radius: 30%;
+  width: 30px;
+  align-content: center;
 }
 
 .top {
@@ -74,16 +75,44 @@
   padding-bottom: 5px;
 }
 
-#popover-basic {
-  position: fixed;
+#popover-form {
+  width: 50px;
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  text-align: center;
 }
 
 .hidden-form{
   opacity: 0;
-  transition: opacity 0.3s;
+  transition: opacity 0.8s;
 }
 
 .show-form{
   opacity: 1;
   transition: opacity 0.5s;
+}
+
+#form-input{
+  width: 180px;
+}
+
+.task-container {
+  border-top: groove  grey;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-top: 5px;
+}
+
+#btn {
+  margin-top: 5px;
+}
+
+#task-description {
+  font-size: small;
+}
+
+#task-title {
+  font-size: medium;
 }
