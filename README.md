@@ -31,6 +31,6 @@ For assistance, click the ? at the top right.
 - [davidtheclark react-aria-modal](https://github.com/davidtheclark/react-aria-modal)
 
 ### LinkedIn ###
-- [Alanna Celanto](https://www.linkedin.com/in/alanna-celentano/)
+- [Alanna Celentano](https://www.linkedin.com/in/alanna-celentano/)
 - [Crystal Vasquez](https://www.linkedin.com/in/crystal-lynn-vasquez/)
 - [Skylar Wong](https://www.linkedin.com/in/skylar-wong/)
