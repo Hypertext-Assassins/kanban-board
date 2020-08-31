@@ -13,6 +13,7 @@ class Board extends Component {
         name: "To Do",
         tasks: [{title: "Make a super cool Kanban board",
                 description: "Write a description about your task"
+
                 }]
       },
       {
@@ -23,6 +24,7 @@ class Board extends Component {
       },
       {
         name: "Done",
+
         tasks: [{title: "Finish writing task templates",
                 description: "Write a description about your task"
                 }]
