@@ -23,6 +23,7 @@ const Task = (props) => {
                     <button
                         className="ui button"
                         onClick={handleClick}
+                        
                     >Hide</button>
                 </>
                     :
