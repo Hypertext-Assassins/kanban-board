@@ -10,21 +10,21 @@ class Board extends Component {
   state ={
     columns: [
       {
-        name: "todo",
-        tasks: [{title: "test todo",
-                description: "todo description"
+        name: "Todo",
+        tasks: [{title: "Todo Sample",
+                description: "Sample description"
                 }]
       },
       {
-        name: "inProgress",
-        tasks: [{title: "inprog todo",
-                description: "inprog description"
+        name: "In Progress",
+        tasks: [{title: "Progress Sample",
+                description: "Sample description"
                 }]
       },
       {
-        name: "done",
-        tasks: [{title: "test done",
-                description: "done description"
+        name: "Done",
+        tasks: [{title: "Done Sample",
+                description: "Sample description"
                 }]
       }
     ],
