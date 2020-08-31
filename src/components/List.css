@@ -17,15 +17,15 @@
     padding-left: 6px;
 }
 
-.todo {
-    font-family: 'Times New Roman', Times, serif;
+.task {
+    font-family: 'Montserrat', sans-serif;
     font-size: 16px;
 }
 
 .header {
     font-weight: 500;
     font-size: 20px;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Bebas Neue', cursive;
     text-align: center;
     border: none;
     border-bottom: 1px solid black;

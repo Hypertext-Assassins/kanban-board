@@ -16,24 +16,24 @@ const Task = (props) => {
             <div {...provided.draggableProps} 
                 {...provided.dragHandleProps}
                 ref={provided.innerRef}>
-            <p className="todo">{props.title}</p>
+            <p className="task">{props.title}</p>
                 {(showDesc) ?
                 <>
-                <p>{props.description}</p>
+                <p className="task">{props.description}</p>
                     <button
                         className="ui button"
                         onClick={handleClick}
-                    >Hide Details</button>
+                    >Hide</button>
                 </>
                     :
                     <button
                         className="ui button"
                         onClick={handleClick}
-                    >Show Details</button>
+                    >...</button>
                 }
                 <button 
                     className="ui black button"
-                    onClick={()=> props.handleDeleteCard(props.task, props.colName)}>Delete</button>
+                    onClick={()=> props.handleDeleteCard(props.task, props.colName)}>x</button>
                 </div>
 
             )}
