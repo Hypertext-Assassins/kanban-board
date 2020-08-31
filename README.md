@@ -27,8 +27,8 @@ For assistance, click the ? at the top right.
 - task descriptions can be edited
 
 ### Credits ### 
-[Mintbean Javascript Olympics Hackathon](https://sites.google.com/mintbean.io/javascriptbootcampolympics/home)
-[davidtheclark react-aria-modal](https://github.com/davidtheclark/react-aria-modal)
+- [Mintbean Javascript Olympics Hackathon](https://sites.google.com/mintbean.io/javascriptbootcampolympics/home)
+- [davidtheclark react-aria-modal](https://github.com/davidtheclark/react-aria-modal)
 
 ### LinkedIn ###
 - [Alanna Celanto](https://www.linkedin.com/in/alanna-celentano/)
