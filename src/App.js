@@ -4,6 +4,7 @@ import Column from './components/Column';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import LandingPageOverlay from './components/LandingPageOverlay';
 import HelpOverlay from './components/HelpOverlay';
+import {Fade} from 'react-awesome-reveal';
 
 class Board extends Component {
   state ={
@@ -144,6 +145,7 @@ class Board extends Component {
   render() { 
     return (
       <>
+      <Fade delay={700}>
       <div className="top">
         hypertext assassins kanban board
         <HelpOverlay />
@@ -156,12 +158,13 @@ class Board extends Component {
             onChange={this.handleAddColChange} ></input>
           </div>
         <button 
-          className="ui button"
+          className="ui mini button"
           type="submit">Add New Column</button>
       </form>
       <DragDropContext onDragEnd={this.onDragEnd}>
         <Droppable droppableId="all-columns" direction="horizontal" type="column">
           {provided => (
+            
             <div className="container" {...provided.droppableProps} ref={provided.innerRef}>
               {this.state.columns.map((column, idx) => 
                 <Column 
@@ -177,10 +180,11 @@ class Board extends Component {
               )}
               {provided.placeholder}
             </div>
+           
           )}
         </Droppable>
       </DragDropContext>
-
+      </Fade>
       </>
     );
   }
