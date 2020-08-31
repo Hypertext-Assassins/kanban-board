@@ -3,7 +3,6 @@ import { Button, Popover, OverlayTrigger } from 'react-bootstrap'
 import AddTask from '../components/AddTask';
 
 
-
 const FormOverlay = (props) => {
 
   const [formDisplay, setFormDisplay] = useState(false);
@@ -15,13 +14,13 @@ const FormOverlay = (props) => {
 
   return ( 
     <>
-      <OverlayTrigger trigger="click" placement="right" show={formDisplay} overlay={
-        <AddTask 
+        
+         <AddTask 
+          hidden={}
           handleAddCard={props.handleAddCard} 
           colName={props.colName}
           handleShowForm={handleShowForm}
         />
-      }>
         {
           (!formDisplay) ?
         <Button variant="success"
@@ -34,7 +33,6 @@ const FormOverlay = (props) => {
         onClick={handleShowForm}
         >-</Button>
       }
-      </OverlayTrigger>
       </>
    );
 }

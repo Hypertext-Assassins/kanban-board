@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import {Popover } from 'react-bootstrap';
+import "../App.css";
+
 
 class AddTask extends Component {
     state = { 
@@ -21,9 +23,8 @@ class AddTask extends Component {
     }
     render() { 
         return (
-        <Popover id="popover-basic">
-        <Popover.Title as="h3">Add New</Popover.Title>
-        <Popover.Content>
+            <div id="popover-basic">
+        
         <form onSubmit={this.handleSubmit}>
         <input
             placeholder='enter your task title'
@@ -37,8 +38,7 @@ class AddTask extends Component {
         ></input>
         <button type="submit">Submit</button>
         </form>
-        </Popover.Content>
-        </Popover>
+        </div>
         );
     }
 }
