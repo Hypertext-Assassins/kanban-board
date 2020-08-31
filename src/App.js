@@ -5,6 +5,8 @@ import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import LandingPageOverlay from './components/LandingPageOverlay';
 import HelpOverlay from './components/HelpOverlay';
 import {Fade} from 'react-awesome-reveal';
+import Footer from './components/Footer';
+
 
 class Board extends Component {
   state ={
@@ -185,6 +187,7 @@ class Board extends Component {
         </Droppable>
       </DragDropContext>
       </Fade>
+      <Footer />
       </>
     );
   }

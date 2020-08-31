@@ -116,3 +116,60 @@
 #task-title {
   font-size: medium;
 }
+
+.footer-container {
+  position: relative;
+  height: 58vh;
+  padding-bottom: 60px;
+}
+
+.footer-div {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.page-footer {
+  border-top: '1px solid #ddd';
+  height: '100px';
+  line-height: '100px';
+  background-color: rgb(154, 154, 154);
+  font-size: medium;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  left:0;
+  bottom:0;
+  right:0;
+  text-align: center;
+}
+
+#footer-title {
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.align-links {
+  text-align: center;
+  padding-top: 5px;
+}
+
+a {
+  color: white;
+}
+
+#footer-content {
+  padding-left: 30px;
+  padding-right: 30px;
+  text-align: center;
+}
+
+.footer-info {
+  padding-top: 10px;
+  font-size: 12px;
+  font-family: 'Menlo';
+  color: black;
+}
+
+#link:hover {
+  color: white;
+}
