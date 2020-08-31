@@ -5,6 +5,8 @@ import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import LandingPageOverlay from './components/LandingPageOverlay';
 import HelpOverlay from './components/HelpOverlay';
 import {Fade} from 'react-awesome-reveal';
+import Footer from './components/Footer';
+
 
 class Board extends Component {
   state ={
@@ -48,6 +50,13 @@ class Board extends Component {
       tasks: []
     }
     this.setState({columns: [...this.state.columns, newColumn]})
+  }
+
+  handleSubmit = (formData) => {
+    this.handleAddColumn(formData)
+    this.setState({
+      createColName: ''
+    })
   }
 
   handleAddColChange = (e) => {
@@ -151,16 +160,19 @@ class Board extends Component {
         <HelpOverlay />
       </div>
       <LandingPageOverlay />
-      <form onSubmit={this.handleAddColumn}>
-        <div className="ui input">
+      <div className="form-div">
+      <form className="ui form" onSubmit={this.handleSubmit}>
+        
           <input 
+            placeholder="Column Title"
             className="ui input" 
             onChange={this.handleAddColChange} ></input>
-          </div>
+          
         <button 
-          className="ui mini button"
-          type="submit">Add New Column</button>
+          className="ui fade animated small button"
+          type="submit"><div className="visible content">New Column</div><div className="hidden content"><i className="plus fitted icon"></i></div></button>
       </form>
+      </div>
       <DragDropContext onDragEnd={this.onDragEnd}>
         <Droppable droppableId="all-columns" direction="horizontal" type="column">
           {provided => (
@@ -185,6 +197,7 @@ class Board extends Component {
         </Droppable>
       </DragDropContext>
       </Fade>
+      <Footer />
       </>
     );
   }
