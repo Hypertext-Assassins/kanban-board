@@ -14,28 +14,29 @@ const FormOverlay = (props) => {
 
   return ( 
     <>  
-    {!formDisplay?
-    <div className='hidden-form'></div>
+      {(!formDisplay) ?
+        <button variant="success"
+          className="ui blue button tiny"
+          id="btn"  
+          onClick={handleShowForm}
+          ><i className="plus fitted icon"></i></button>
+        :
+        <button variant="success"
+          id="btn"
+          className="ui button tiny" 
+          onClick={handleShowForm}
+          ><i className="minus fitted icon"></i></button>
+      }
+      {!formDisplay?
+        <div className='hidden-form'></div>
       :
-      <div className='show-form'>
+        <div className='show-form'>
         <AddTask 
           handleAddCard={props.handleAddCard} 
           colName={props.colName}
           handleShowForm={handleShowForm}
         />
         </div>
-    }
-        {
-          (!formDisplay) ?
-        <Button variant="success"
-        className="ui blue button"  
-        onClick={handleShowForm}
-        >+</Button>
-        :
-        <Button variant="success"
-        className="ui button" 
-        onClick={handleShowForm}
-        >-</Button>
       }
       </>
    );

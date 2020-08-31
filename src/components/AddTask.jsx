@@ -23,21 +23,26 @@ class AddTask extends Component {
     }
     render() { 
         return (
-            <div id="popover-basic">
-        
-        <form onSubmit={this.handleSubmit}>
-        <input
-            placeholder='enter your task title'
-            name="title"
-            onChange={this.handleChange}
-        ></input>
-        <input
-            placeholder='enter your task description'
-            name="description"
-            onChange={this.handleChange}
-        ></input>
-        <button type="submit">Submit</button>
-        </form>
+        <div id="popover-form">
+            <form onSubmit={this.handleSubmit}>
+            <input
+                id="form-input"
+                className="ui input huge"
+                placeholder='title'
+                name="title"
+                onChange={this.handleChange}>
+            </input>
+            <br></br>
+            <input
+                id="form-input"
+                className="ui input large"
+                placeholder='description'
+                name="description"
+                onChange={this.handleChange}>    
+            </input>
+            <hr></hr>
+            <button className="ui animated mini teal button" type="submit"><div class="visible content">Submit</div><div class="hidden content"><i aria-hidden="true" className="yellow add circle icon"></i></div></button>
+            </form>
         </div>
         );
     }
