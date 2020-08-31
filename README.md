@@ -1,7 +1,7 @@
-# Hypertext Assassin's Kanban Board
+# Hypertext Assassins Kanban Board
 
 ### Overview ###
-Welcome to the Hypertext Assasins' Kanban Board Project! This project was created as a front-end CRUD application, using React, for Mintbean's Javascript Bootcamp Olympics Hackathon.
+Welcome to the Hypertext Assasins Kanban Board Project! This project was created as a front-end CRUD application, using React, for Mintbean's Javascript Bootcamp Olympics Hackathon.
 
 Organize your tasks by using our kanban board, which allows the user to create columns and tasks, move tasks between columns, and also re-order the columns.
 
