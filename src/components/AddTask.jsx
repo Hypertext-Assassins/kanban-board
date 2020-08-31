@@ -27,7 +27,7 @@ class AddTask extends Component {
             <form onSubmit={this.handleSubmit}>
             <input
                 id="form-input"
-                className="ui input huge"
+                className="ui input large"
                 placeholder='title'
                 name="title"
                 onChange={this.handleChange}>
@@ -35,7 +35,7 @@ class AddTask extends Component {
             <br></br>
             <input
                 id="form-input"
-                className="ui input large"
+                className="ui input small"
                 placeholder='description'
                 name="description"
                 onChange={this.handleChange}>    

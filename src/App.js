@@ -31,6 +31,7 @@ class Board extends Component {
       }
     ],
     createColName: "",
+    showForm: false
   }
 
   /////////// COLUMN FUNCTIONS
@@ -49,15 +50,13 @@ class Board extends Component {
       name: columnTitle,
       tasks: []
     }
-    this.setState({columns: [...this.state.columns, newColumn]})
-  }
-
-  handleSubmit = (formData) => {
-    this.handleAddColumn(formData)
     this.setState({
-      createColName: ''
+      columns: [...this.state.columns, newColumn],
+      showForm: false
+    
     })
   }
+
 
   handleAddColChange = (e) => {
     this.setState({createColName: e.target.value})
@@ -150,6 +149,13 @@ class Board extends Component {
     this.setState({stateCopy})
   }
 
+  handleFormClick = () => {
+    this.setState({
+      createColName: '',
+      showForm: true
+    })
+  }
+
 ///////////////
   render() { 
     return (
@@ -160,19 +166,24 @@ class Board extends Component {
         <HelpOverlay />
       </div>
       <LandingPageOverlay />
+      {this.state.showForm ?
       <div className="form-div">
-      <form className="ui form" onSubmit={this.handleSubmit}>
-        
+      <form className="ui form" onSubmit={this.handleAddColumn}>
+      <button 
+          className="ui small button"
+          type="submit">Add New Column</button>
           <input 
             placeholder="Column Title"
-            className="ui input" 
+            className="ui input huge" 
             onChange={this.handleAddColChange} ></input>
-          
-        <button 
-          className="ui fade animated small button"
-          type="submit"><div className="visible content">New Column</div><div className="hidden content"><i className="plus fitted icon"></i></div></button>
       </form>
       </div>
+      :
+      <button 
+      className="ui fade animated small button"
+      id="new-column-button"
+      onClick={this.handleFormClick}><div className="visible content">New Column</div><div className="hidden content"><i className="plus fitted icon"></i></div></button>
+      }
       <DragDropContext onDragEnd={this.onDragEnd}>
         <Droppable droppableId="all-columns" direction="horizontal" type="column">
           {provided => (
