@@ -34,10 +34,10 @@
     border-radius: 5px;
 }
 
-input {
+/* input {
     width: 214.75px;
     height: 20.2px;
-}
+} */
 
 .header::placeholder {
     opacity: 1;
