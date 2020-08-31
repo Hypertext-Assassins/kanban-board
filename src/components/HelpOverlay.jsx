@@ -17,7 +17,8 @@ const popover = (
            <hr></hr>
            <li> Click on the <i className="x fitted icon"></i> to delete a task within a column. </li>
            <hr></hr>
-           <li>Click on the <i className="arrow alternate circle up outline fitted icon"></i> to view the task description</li>
+           <li>Click on the <i className="arrow alternate circle down outline fitted icon"></i> to view the task description</li>
+           <hr></hr>
            <li> Click on a task and drag to reorder within a column or move to a new column. </li>
            <hr></hr>
            <li> Click on a column and drag to reorder columns. </li>
