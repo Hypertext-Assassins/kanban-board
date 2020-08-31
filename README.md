@@ -12,6 +12,8 @@ This project was created for Mintbean's Javascript Bootcamp Olympics Hackathon. 
 ### Check out the App: ###
 [Hypertext Assassin's Kanban Board Project](https://hypertext-assassins-kanban.herokuapp.com/)
 
+![Photo of Kanban Board](https://i.imgur.com/2QEfZKz.png)
+
 
 ### Technologies ###
 - React
