@@ -52,6 +52,13 @@ class Board extends Component {
     this.setState({columns: [...this.state.columns, newColumn]})
   }
 
+  handleSubmit = (formData) => {
+    this.handleAddColumn(formData)
+    this.setState({
+      createColName: ''
+    })
+  }
+
   handleAddColChange = (e) => {
     this.setState({createColName: e.target.value})
   }
@@ -153,16 +160,19 @@ class Board extends Component {
         <HelpOverlay />
       </div>
       <LandingPageOverlay />
-      <form onSubmit={this.handleAddColumn}>
-        <div className="ui input">
+      <div className="form-div">
+      <form className="ui form" onSubmit={this.handleSubmit}>
+        
           <input 
+            placeholder="Column Title"
             className="ui input" 
             onChange={this.handleAddColChange} ></input>
-          </div>
+          
         <button 
-          className="ui mini button"
-          type="submit">Add New Column</button>
+          className="ui fade animated small button"
+          type="submit"><div className="visible content">New Column</div><div className="hidden content"><i className="plus fitted icon"></i></div></button>
       </form>
+      </div>
       <DragDropContext onDragEnd={this.onDragEnd}>
         <Droppable droppableId="all-columns" direction="horizontal" type="column">
           {provided => (
